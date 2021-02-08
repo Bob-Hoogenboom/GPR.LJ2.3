@@ -16,8 +16,12 @@ public class Coroutine : MonoBehaviour
     {
         Debug.Log("Ik start nu de coroutine");
         yield return new WaitForSeconds(_Seconds);
+        for (float i = 9; i >= 0; i-- )
+        {
         Debug.Log("Coroutine update");
         yield return new WaitForSeconds(_Seconds);
+        }
+
         Debug.Log("Coroutine einde");
     }
 }
