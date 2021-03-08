@@ -14,13 +14,18 @@ public class Coroutine : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            StartCoroutine(Routine());
+            StartCoroutine(RoutineFadeOut());
+        }
+
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            StartCoroutine(RoutineFadeIn());
         }
     }
 
-    IEnumerator Routine()
+    IEnumerator RoutineFadeOut()
     {
         Debug.Log("Ik start nu de coroutine");
         for (float i = 1; i >= 0; i-= 0.01f)
@@ -33,6 +38,19 @@ public class Coroutine : MonoBehaviour
         }
 
         Debug.Log("Coroutine einde");
+    }
+
+    IEnumerator RoutineFadeIn()
+    {
+        Debug.Log("Ik start nu de coroutine");
+        for (float i = 0; i <= 1; i += 0.01f)
+        {
+            Color c = _renderer.material.color;
+            c.a = i;
+            _renderer.material.color = c;
+            Debug.Log("fade");
+            yield return new WaitForSeconds(_Seconds / 100);
+        }
     }
 }
 
