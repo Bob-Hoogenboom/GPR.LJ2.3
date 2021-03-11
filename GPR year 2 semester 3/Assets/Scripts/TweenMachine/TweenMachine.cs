@@ -1,18 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TweenMachine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<Tween> _activeTweens = new List<Tween>();
+
+    private void Update()
     {
-        
+        if (_activeTweens.Count < 1) return;
+
+        for (int i = 0; i < _activeTweens.Count; i++)
+        {
+            _activeTweens[i].UpdateTween(Time.deltaTime);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveGameObject(GameObject objectToMove, Vector3 targetPosition, float speed)
     {
-        
+        Tween newTween = new Tween(objectToMove, targetPosition, speed);
+        _activeTweens.Add(newTween);
     }
 }

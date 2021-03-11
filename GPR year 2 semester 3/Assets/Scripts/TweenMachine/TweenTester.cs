@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class TweenTester : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public Vector3 targetPosition;
+    public float speed;
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+            FindObjectOfType<TweenMachine>().MoveGameObject(gameObject, targetPosition, speed);
     }
 }

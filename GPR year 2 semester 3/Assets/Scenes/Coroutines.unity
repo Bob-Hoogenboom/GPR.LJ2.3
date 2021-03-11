@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 227552968}
   - component: {fileID: 227552967}
   m_Layer: 0
-  m_Name: Opdracht 2
+  m_Name: Opdracht2Tween
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 1325581636}
   - component: {fileID: 1325581635}
   m_Layer: 0
-  m_Name: Opdracht 1
+  m_Name: Opdracht1Coroutine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
