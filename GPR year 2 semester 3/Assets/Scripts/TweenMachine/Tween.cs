@@ -12,10 +12,11 @@ public class Tween
 
     private float _speed;
     private float _percent;
+    private bool _isFinished = false;
 
     private Func<float, float> EaseMethod;
 
-    public Tween(GameObject objectToMove, Vector3 targetPosition, float speed)
+    public Tween(GameObject objectToMove, Vector3 targetPosition, float speed, Func<float, float> easeMethod)
     {
         _gameObject = objectToMove;
         _targetPosition = targetPosition;
@@ -25,7 +26,7 @@ public class Tween
         _direction = _targetPosition - _startPosition;
         _percent = 0;
 
-        EaseMethod = Easings.EaseInQuad;
+        EaseMethod = easeMethod;
 
         Debug.Log("Tween Started");
     }
@@ -42,10 +43,13 @@ public class Tween
         }
         else
         {
-
+            _isFinished = true;
         }
 
-
+    }
+    public bool IsFinished()
+    {
+        return _isFinished;
     }
 }
 /*
