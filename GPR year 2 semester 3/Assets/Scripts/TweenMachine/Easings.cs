@@ -5,6 +5,7 @@ using System;
 
 public class Easings
 {
+    //Easing Sine
     public static float EaseInSine(float x)
     {
         return (float)(1 - Math.Cos((x * Math.PI) / 2));
@@ -20,12 +21,11 @@ public class Easings
         return (float)(-(Math.Cos(Math.PI * x) - 1) / 2);
     }
 
-
+    //Easing Cubic
     public static float EaseInCubic(float x)
     {
         return (x * x * x);
     }
-
 
     public static float EaseOutCubic(float x)
     {
@@ -37,6 +37,7 @@ public class Easings
         return (float)(x < 0.5 ? 4 * x * x * x : 1 - Math.Pow(-2 * x + 2, 3) / 2);
     }
 
+    //Easing Quint
     public static float EaseInQuint(float x)
     {
         return (x * x * x * x * x);
@@ -52,6 +53,7 @@ public class Easings
         return (float)(x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.Pow(-2 * x + 2, 5) / 2);
     }
 
+    //Easing Circ
     public static float EaseInCirc(float x)
     {
         return (float)(1 - Math.Sqrt(1 - Math.Pow(x, 2)));
@@ -67,6 +69,7 @@ public class Easings
         return (float)(x < 0.5 ? (1 - Math.Sqrt(1 - Math.Pow(2 * x, 2))) / 2 : (Math.Sqrt(1 - Math.Pow(-2 * x + 2, 2)) + 1) / 2);
     }
 
+    //Easing Elastic
     public static float EaseInElastic(float x)
     {
         float c4 = (float)((2 * Math.PI) / 3);
@@ -88,8 +91,7 @@ public class Easings
         return (float)(x == 0 ? 0 : x >= 1 ? 1 : x < 0.5 ? -(Math.Pow(2, 20 * x - 10) * Math.Sin((20 * x - 11.125) * c5)) / 2 : (Math.Pow(2, -20 * x + 10) * Math.Sin((20 * x - 11.125) * c5)) / 2 + 1);
     }
 
-
-    // row 2
+    //Easing Quad
     public static float EaseInQuad(float x)
     {
         return (x * x);
@@ -105,6 +107,7 @@ public class Easings
         return (float)(x < 0.5 ? 2 * x * x : 1 - Math.Pow(-2 * x + 2, 2) / 2);
     }
 
+    //Easing Quart
     public static float EaseInQuart(float x)
     {
         return (x * x * x * x);
@@ -120,6 +123,7 @@ public class Easings
         return (float)(x < 0.5 ? 8 * x * x * x * x : 1 - Math.Pow(-2 * x + 2, 4) / 2);
     }
 
+    //Easing Expo
     public static float EaseInExpo(float x)
     {
         return (float)(x == 0 ? 0 : Math.Pow(2, 10 * x - 10));
@@ -135,6 +139,7 @@ public class Easings
         return (float)(x == 0 ? 0 : x >= 1 ? 1 : x < 0.5 ? Math.Pow(2, 20 * x - 10) / 2 : (2 - Math.Pow(2, -20 * x + 10)) / 2);
     }
 
+    //Easing Back
     public static float EaseInBack(float x)
     {
         float c1 = 1.70158f;
@@ -159,6 +164,7 @@ public class Easings
         return (float)(x < 0.5 ? (Math.Pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2 : (Math.Pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2);
     }
 
+    //Easing Bounce
     public static float EaseInBounce(float x)
     {
         return (1 - EaseOutBounce(1 - x));

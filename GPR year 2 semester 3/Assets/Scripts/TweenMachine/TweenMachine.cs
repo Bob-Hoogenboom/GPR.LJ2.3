@@ -88,6 +88,13 @@ public class TweenMachine : MonoBehaviour
         _activeTweens.Add(newTween);
     }
 
+/*    public void RotateGameObject(GameObject objectRotate, float RotationSpeed, EasingType type)
+    {
+        Debug.Log(type);
+        Tween newTween = new Tween(objectRotate, RotationSpeed, easingCombiner[type]);
+        _activeTweens.Add(newTween);
+    }*/
+
     public static TweenMachine GetInstance()
     {
         return instance;
