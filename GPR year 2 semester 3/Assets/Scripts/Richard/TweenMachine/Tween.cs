@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Tween
 {
-    private GameObject _gameObject;
-    private Vector3 _startPosition;
-    private Vector3 _targetPosition;
-    private Vector3 _direction;
+    protected GameObject _gameObject;
+    protected Vector3 _startPosition;
 
     private float _speed;
     private float _percent;
@@ -16,14 +14,12 @@ public class Tween
 
     private Func<float, float> EaseMethod;
 
-    public Tween(GameObject objectToMove, Vector3 targetPosition, float speed, Func<float, float> easeMethod)
+    public Tween(GameObject objectToMove, float speed, Func<float, float> easeMethod)
     {
         _gameObject = objectToMove;
-        _targetPosition = targetPosition;
         _speed = speed;
 
         _startPosition = _gameObject.transform.position;
-        _direction = _targetPosition - _startPosition;
         _percent = 0;
 
         EaseMethod = easeMethod;
@@ -38,15 +34,28 @@ public class Tween
         if(_percent < 1)
         {
             float easeStep = EaseMethod(_percent);
-            _gameObject.transform.position = _startPosition + (_direction * easeStep);
+            PerformTween(easeStep);
             Debug.Log(_gameObject + ": Tween Update");
         }
         else
         {
             _isFinished = true;
+            OnTweenComplete();
         }
 
     }
+
+    protected virtual void PerformTween(float easeStep) 
+    { 
+        
+    }
+
+    protected virtual void OnTweenComplete()
+    {
+
+    }
+
+
     public bool IsFinished()
     {
         return _isFinished;

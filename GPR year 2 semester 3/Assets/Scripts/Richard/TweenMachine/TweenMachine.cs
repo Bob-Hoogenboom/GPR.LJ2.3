@@ -23,6 +23,7 @@ public class TweenMachine : MonoBehaviour
             return;
         }
 
+        //function V
         easingCombiner.Add(EasingType.easeInSine, Easings.EaseInSine);
         easingCombiner.Add(EasingType.easeOutSine, Easings.EaseOutSine);
         easingCombiner.Add(EasingType.easeInOutSine, Easings.EaseInOutSine);
@@ -84,16 +85,16 @@ public class TweenMachine : MonoBehaviour
     public void MoveGameObject(GameObject objectToMove, Vector3 targetPosition, float speed, EasingType type)
     {
         Debug.Log(type);
-        Tween newTween = new Tween(objectToMove, targetPosition, speed, easingCombiner[type]);
+        TweenPosition newTween = new TweenPosition(objectToMove, targetPosition, speed, easingCombiner[type]);
         _activeTweens.Add(newTween);
     }
 
-/*    public void RotateGameObject(GameObject objectRotate, float RotationSpeed, EasingType type)
+    public void RotateGameObject(GameObject objectRotate, Vector3 targetRotation, float RotationSpeed, EasingType type)
     {
         Debug.Log(type);
-        Tween newTween = new Tween(objectRotate, RotationSpeed, easingCombiner[type]);
+        TweenRotate newTween = new TweenRotate(objectRotate, targetRotation, RotationSpeed, easingCombiner[type]);
         _activeTweens.Add(newTween);
-    }*/
+    }
 
     public static TweenMachine GetInstance()
     {

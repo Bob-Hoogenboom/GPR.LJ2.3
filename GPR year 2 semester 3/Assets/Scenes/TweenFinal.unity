@@ -445,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed1380b677a92c438ce848bd900c193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
-  speed: 0
-  methodType: 0
+  targetPosition: {x: 1, y: 1, z: 0}
+  targetRotation: {x: 90, y: 90, z: 90}
+  speed: 5
+  methodType: 3
