@@ -10,14 +10,13 @@ public class TweenMachine : MonoBehaviour
     private Dictionary<EasingType, Func<float, float>> easingCombiner = new Dictionary<EasingType, Func<float, float>>();
 
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
+    private void Awake() {
+
+        if (instance == null) {
+
             instance = this;
-        }
-        else
-        {
+        } else {
+
             this.enabled = false;
             Debug.LogWarning("there may only be one object with the tweenmachine class");
             return;
@@ -63,18 +62,18 @@ public class TweenMachine : MonoBehaviour
         easingCombiner.Add(EasingType.easeInBounce, Easings.EaseInBounce);
         easingCombiner.Add(EasingType.easeOutBounce, Easings.EaseOutBounce);
         easingCombiner.Add(EasingType.easeInOutBounce, Easings.EaseInOutBounce);
-
     }
-    private void Update()
-    {
+
+    private void Update() {
+
         if (_activeTweens.Count < 1) return;
 
-        for (int i = 0; i < _activeTweens.Count; i++)
-        {
+        for (int i = 0; i < _activeTweens.Count; i++) {
+
             _activeTweens[i].UpdateTween(Time.deltaTime);
 
-            if(_activeTweens[i].IsFinished())
-            {
+            if(_activeTweens[i].IsFinished()) {
+
                 _activeTweens.RemoveAt(i);
                 i -= 1;
                 Debug.Log("finished Tween!");
@@ -82,22 +81,19 @@ public class TweenMachine : MonoBehaviour
         }
     }
 
-    public void MoveGameObject(GameObject objectToMove, Vector3 targetPosition, float speed, EasingType type)
-    {
+    public void MoveGameObject(GameObject objectToMove, Vector3 targetPosition, float speed, EasingType type) {
         Debug.Log(type);
         TweenPosition newTween = new TweenPosition(objectToMove, targetPosition, speed, easingCombiner[type]);
         _activeTweens.Add(newTween);
     }
 
-    public void RotateGameObject(GameObject objectRotate, Vector3 targetRotation, float RotationSpeed, EasingType type)
-    {
+    public void RotateGameObject(GameObject objectRotate, Vector3 targetRotation, float RotationSpeed, EasingType type) {
         Debug.Log(type);
         TweenRotate newTween = new TweenRotate(objectRotate, targetRotation, RotationSpeed, easingCombiner[type]);
         _activeTweens.Add(newTween);
     }
 
-    public static TweenMachine GetInstance()
-    {
+    public static TweenMachine GetInstance() {
         return instance;
     }
 }

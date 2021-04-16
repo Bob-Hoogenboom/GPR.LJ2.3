@@ -14,8 +14,7 @@ public class Tween
 
     private Func<float, float> EaseMethod;
 
-    public Tween(GameObject objectToMove, float speed, Func<float, float> easeMethod)
-    {
+    public Tween(GameObject objectToMove, float speed, Func<float, float> easeMethod) {
         _gameObject = objectToMove;
         _speed = speed;
 
@@ -27,37 +26,31 @@ public class Tween
         Debug.Log("Tween Started");
     }
 
-    public void UpdateTween(float dt)
-    {
+    public void UpdateTween(float dt) {
         _percent += dt / _speed;
 
-        if(_percent < 1)
-        {
+        if(_percent < 1) {
+
             float easeStep = EaseMethod(_percent);
             PerformTween(easeStep);
             Debug.Log(_gameObject + ": Tween Update");
-        }
-        else
-        {
+        } else {
+
             _isFinished = true;
             OnTweenComplete();
         }
-
     }
 
-    protected virtual void PerformTween(float easeStep) 
-    { 
+    protected virtual void PerformTween(float easeStep) { 
         
     }
 
-    protected virtual void OnTweenComplete()
-    {
+    protected virtual void OnTweenComplete() {
 
     }
 
 
-    public bool IsFinished()
-    {
+    public bool IsFinished() {
         return _isFinished;
     }
 }

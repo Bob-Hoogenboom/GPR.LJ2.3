@@ -11,8 +11,8 @@ public class TweenTester : MonoBehaviour
     public EasingType methodType; // gebruikt de enum list
 
 
-    void Update()
-    {
+    void Update() {
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
             TweenMachine.GetInstance().MoveGameObject(gameObject, targetPosition, speed, methodType);
         
