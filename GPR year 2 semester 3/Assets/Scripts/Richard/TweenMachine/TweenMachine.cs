@@ -93,6 +93,13 @@ public class TweenMachine : MonoBehaviour
         _activeTweens.Add(newTween);
     }
 
+    public void ScaleGameObject(GameObject objectScale, Vector3 targetScale, float scaleSpeed, EasingType type)
+    {
+        Debug.Log(type);
+        TweenScale newTween = new TweenScale(objectScale, targetScale, scaleSpeed, easingCombiner[type]);
+        _activeTweens.Add(newTween);
+    }
+
     public static TweenMachine GetInstance() {
         return instance;
     }
